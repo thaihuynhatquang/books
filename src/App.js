@@ -1,23 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import HTMLFlipBook from "react-pageflip";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="flip-book">
+      <HTMLFlipBook width={600} height={800} showCover={true}>
+        {[...Array(14).keys()].map((el) => {
+          console.log(`./images/${el}.jpg`);
+          return (
+            <div key={el} className="page">
+              <img width={600} src={`./images/${el}.jpg`} alt={el} />
+            </div>
+          );
+        })}
+      </HTMLFlipBook>
     </div>
   );
 }
