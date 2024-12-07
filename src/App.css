@@ -1,5 +1,14 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden; /* Disables scrollbars */
+}
+
 .flip-book {
-  /* make sure app center */
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -8,4 +17,29 @@
   background: #111111;
   padding: 20px;
   overflow: hidden;
+
+  background-image: url("/public/images/left_bg.png"), url("/public/images/right_bg.png");
+  background-repeat: no-repeat;
+  background-position:
+    bottom left,
+    bottom right;
+  background-size:
+    40% auto,
+    40% auto;
+}
+
+.left-arrow {
+  cursor: pointer;
+  position: fixed;
+  left: 12vw;
+}
+.right-arrow {
+  cursor: pointer;
+  position: fixed;
+  right: 12vw;
+}
+.sound-icon {
+  cursor: pointer;
+  position: absolute;
+  top: 40px;
 }
