@@ -2,13 +2,18 @@ import { useCallback, useRef, useState } from "react";
 import "./App.css";
 import HTMLFlipBook from "react-pageflip";
 import { BackgroundMusic } from "./BackgroundMusic.js";
+import ReadingProgress from "./ReadingProgress"; // Import ReadingProgress component
 
 function App() {
   const bookRef = useRef();
   const [currentPage, setCurrentPage] = useState(0);
+  const [readingProgress, setReadingProgress] = useState(0); // Add readingProgress state
 
   const onFlip = useCallback((e) => {
     setCurrentPage(e.data);
+    const totalPages = 38; // Total number of pages including first and last
+    const progress = ((e.data + 1) / totalPages) * 100;
+    setReadingProgress(progress);
   }, []);
 
   return (
@@ -52,6 +57,7 @@ function App() {
       )}
 
       <BackgroundMusic />
+      <ReadingProgress progress={readingProgress} /> {/* Use ReadingProgress component */}
     </div>
   );
 }
